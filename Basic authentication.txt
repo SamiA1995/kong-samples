@@ -1,3 +1,9 @@
+1. Create a consumer with just username and ID.
+
+2. Enable the basic authentication plugin for a service and route.
+
+3. Add the basic authentication credentials to the consumer you created in step 1.
+
 curl -i http://192.168.1.250/<route> -H "authorization: Basic <base64 encoded (username:password)>"
 
 curl -i http://192.168.1.250/<route> -H "apikey: <key>"
