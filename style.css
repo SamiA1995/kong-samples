@@ -1,0 +1,76 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Table styling */
+.table-striped tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+/* Buttons */
+.btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Search input */
+#search {
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s;
+}
+
+#search: focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0,123,255,0.3);
+}
+
+/* Dark mode overrides */
+.bg-dark {
+    background-color: #121212 !important;
+}
+
+.text-white {
+    color: #e0e0e0 !important;
+}
+
+.table-striped tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.alert {
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* Smooth transitions for theme toggle */
+body.bg-dark, body.text-white {
+    transition: background-color 0.3s, color 0.3s;
+}
