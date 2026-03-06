@@ -1,0 +1,47 @@
+Before sending thousands of requests:
+
+sami@sami-VirtualBox-1:~/Documents$ kubectl top node
+NAME                CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)  
+sami-virtualbox-1   714m         17%      5440Mi          69%        
+sami-virtualbox-2   299m         7%       2111Mi          55%        
+sami-virtualbox-3   343m         8%       3786Mi          48%   
+   
+sami@sami-VirtualBox-1:~/Documents$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                1m           6Mi            
+kong-cp-kong-5bd4fd9d58-cnmd7        32m          386Mi          
+kong-dp-kong-5dffdbf7bd-5vqm9        9m           527Mi          
+postgres-55869659f-2qp7q             11m          68Mi            
+spring-deployment-54b5db5499-pjmtw   3m           137Mi       
+
+---
+            
+After sending thousands of requests:
+    
+sami@sami-VirtualBox-1:~/Documents$ kubectl get pods -o wide
+NAME                                 READY   STATUS      RESTARTS      AGE   IP           NODE                NOMINATED NODE   READINESS GATES
+echo-6f4786c4b4-kp6nt                1/1     Running     6 (22h ago)   51d   10.0.2.174   sami-virtualbox-3   <none>           <none>
+kong-cp-kong-5bd4fd9d58-cnmd7        2/2     Running     0             85m   10.0.0.193   sami-virtualbox-2   <none>           <none>
+kong-cp-kong-init-migrations-4kt2m   0/1     Completed   0             85m   10.0.0.33    sami-virtualbox-2   <none>           <none>
+kong-dp-kong-5dffdbf7bd-5vqm9        1/1     Running     0             83m   10.0.0.58    sami-virtualbox-2   <none>           <none>
+postgres-55869659f-2qp7q             1/1     Running     6 (22h ago)   51d   10.0.2.158   sami-virtualbox-3   <none>           <none>
+spring-deployment-54b5db5499-pjmtw   1/1     Running     6 (22h ago)   51d   10.0.2.80    sami-virtualbox-3   <none>           <none>
+
+sami@sami-VirtualBox-1:~/Documents$ kubectl top node
+NAME                CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)  
+sami-virtualbox-1   3175m        79%      5476Mi          69%        
+sami-virtualbox-2   355m         8%       2123Mi          55%        
+sami-virtualbox-3   1630m        40%      3811Mi          48%
+      
+sami@sami-VirtualBox-1:~/Documents$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                0m           6Mi            
+kong-cp-kong-5bd4fd9d58-cnmd7        42m          386Mi          
+kong-dp-kong-5dffdbf7bd-5vqm9        15m          535Mi          
+postgres-55869659f-2qp7q             15m          70Mi            
+spring-deployment-54b5db5499-pjmtw   455m         164Mi    
+
+---
+
+Overall we can see that the CPU and memory of the control plane, data plane, and postgres database remain almost the same, and therefore do not require auto scaling.
+Also, we can see that that microservice/API's are the only pods which require auto scaling. But this is not Kong related.

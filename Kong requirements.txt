@@ -1,0 +1,19 @@
+Kong scaling - check how many requests can be sent / how to scale capacity
+
+---
+
+Kong utilisation - memory / storage / CPU utilisation
+	
+
+---
+
+What happens if the control plane and data plane are uninstalled? Is everything truly kept on DB?
+	helm uninstall kong-cp
+	helm uninstall kong-dp
+	
+	helm install kong-cp kong/kong -n kong --values ./values-cp.yaml
+	helm install kong-dp kong/kong -n kong --values ./values-dp.yaml
+	
+	Before uninstalling and then after reinstalling resulted in all Kong configuation being present.
+	This was tested with the Gateway Services, Routes, and Plugins configuration with screenshots confirming everything was the same before and after.
+	This means all Kong configuration is indeed stored in the postgres database which can be queried to see all data.
