@@ -1,3 +1,21 @@
+Kong logging and debugging
+Resilience
+Load controls
+Security (JWT tokens?)
+Upgrades
+Deployment Model
+TSA compliance
+
+Canary release plugin
+Redirect plugin
+Request termination plugin
+Prometheus plugin
+File log plugin
+HTTP log plugin
+TCP log plugin
+
+---
+
 Kong scaling - check how many requests can be sent / how to scale capacity
 
 ---
