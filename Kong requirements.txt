@@ -1,11 +1,3 @@
-Kong logging and debugging
-Resilience
-Load controls
-Security (JWT tokens?)
-Upgrades
-Deployment Model
-TSA compliance
-
 Canary release plugin
 Redirect plugin
 Request termination plugin
@@ -16,12 +8,13 @@ TCP log plugin
 
 ---
 
-Kong scaling - check how many requests can be sent / how to scale capacity
+Kong scaling - how to scale capacity
+	See Kong auto scaling
 
 ---
 
 Kong utilisation - memory / storage / CPU utilisation
-	
+	See Kong scaling.txt
 
 ---
 

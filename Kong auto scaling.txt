@@ -1,0 +1,60 @@
+        sami@sami-VirtualBox-1:~$ kubectl get pods -o wide
+NAME                                 READY   STATUS    RESTARTS        AGE   IP           NODE                NOMINATED NODE   READINESS GATES
+echo-6f4786c4b4-kp6nt                1/1     Running   8               52d   10.0.2.42    sami-virtualbox-3   <none>           <none>
+kong-cp-kong-5bd4fd9d58-gc4kk        2/2     Running   3 (73s ago)     32m   10.0.2.204   sami-virtualbox-3   <none>           <none>
+kong-dp-kong-66fd664dd8-j79j4        1/1     Running   0               51s   10.0.0.254   sami-virtualbox-2   <none>           <none>
+kong-dp-kong-66fd664dd8-nzgpd        1/1     Running   3 (4m10s ago)   32m   10.0.2.27    sami-virtualbox-3   <none>           <none>
+postgres-55869659f-2qp7q             1/1     Running   8 (15m ago)     52d   10.0.2.81    sami-virtualbox-3   <none>           <none>
+spring-deployment-54b5db5499-pjmtw   1/1     Running   8 (15m ago)     52d   10.0.2.169   sami-virtualbox-3   <none>           <none>
+
+sami@sami-VirtualBox-1:~$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                1m           7Mi            
+kong-cp-kong-5bd4fd9d58-gc4kk        64m          438Mi          
+kong-dp-kong-66fd664dd8-j79j4        26m          550Mi          
+kong-dp-kong-66fd664dd8-nzgpd        22m          478Mi          
+postgres-55869659f-2qp7q             26m          120Mi          
+spring-deployment-54b5db5499-pjmtw   91m          123Mi          
+        
+sami@sami-VirtualBox-1:~$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                0m           7Mi            
+kong-cp-kong-5bd4fd9d58-gc4kk        40m          379Mi          
+kong-dp-kong-66fd664dd8-j79j4        41m          562Mi          
+kong-dp-kong-66fd664dd8-nzgpd        38m          491Mi          
+postgres-55869659f-2qp7q             14m          85Mi            
+spring-deployment-54b5db5499-pjmtw   345m         140Mi          
+
+sami@sami-VirtualBox-1:~$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                0m           7Mi            
+kong-cp-kong-5bd4fd9d58-gc4kk        54m          407Mi          
+kong-dp-kong-66fd664dd8-4x56m        1717m        410Mi          
+kong-dp-kong-66fd664dd8-j79j4        245m         581Mi          
+kong-dp-kong-66fd664dd8-nzgpd        133m         523Mi          
+postgres-55869659f-2qp7q             18m          87Mi            
+spring-deployment-54b5db5499-pjmtw   246m         161Mi          
+
+sami@sami-VirtualBox-1:~$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                0m           7Mi            
+kong-cp-kong-5bd4fd9d58-gc4kk        65m          423Mi          
+kong-dp-kong-66fd664dd8-2wdsx        56m          486Mi          
+kong-dp-kong-66fd664dd8-4x56m        73m          463Mi          
+kong-dp-kong-66fd664dd8-j79j4        103m         593Mi          
+kong-dp-kong-66fd664dd8-nzgpd        58m          535Mi          
+postgres-55869659f-2qp7q             16m          87Mi            
+spring-deployment-54b5db5499-pjmtw   130m         160Mi          
+         
+sami@sami-VirtualBox-1:~$ kubectl top pods
+NAME                                 CPU(cores)   MEMORY(bytes)  
+echo-6f4786c4b4-kp6nt                0m           7Mi            
+kong-cp-kong-5bd4fd9d58-gc4kk        40m          469Mi          
+kong-dp-kong-66fd664dd8-j79j4        16m          593Mi          
+kong-dp-kong-66fd664dd8-nzgpd        18m          572Mi          
+postgres-55869659f-2qp7q             13m          86Mi            
+spring-deployment-54b5db5499-pjmtw   4m           161Mi
+
+sami@sami-VirtualBox-1:~$ kubectl get hpa --watch
+NAME           REFERENCE                 TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+kong-dp-kong   Deployment/kong-dp-kong   cpu: <unknown>/90%   1         4         1          113m
